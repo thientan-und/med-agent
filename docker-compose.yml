@@ -1,17 +1,4 @@
 services:
-  ollama:
-    build:
-      context: ./ollama
-      dockerfile: Dockerfile
-    container_name: medical-ollama
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    restart: unless-stopped
-    networks:
-      - medical-network
-
   backend:
     build:
       context: ./medication-chat-poc/backend
@@ -23,11 +10,9 @@ services:
       - ENVIRONMENT=production
       - HOST=0.0.0.0
       - PORT=8000
-      - OLLAMA_URL=http://ollama:11434
+      - OLLAMA_URL=http://host.docker.internal:11434
       - SEALLM_MODEL=nxphi47/seallm-7b-v2-q4_0:latest
       - MEDLLAMA_MODEL=medllama2:latest
-    depends_on:
-      - ollama
     restart: unless-stopped
     networks:
       - medical-network
@@ -51,10 +36,6 @@ services:
     restart: unless-stopped
     networks:
       - medical-network
-
-volumes:
-  ollama_data:
-    driver: local
 
 networks:
   medical-network:

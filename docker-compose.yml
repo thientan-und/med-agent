@@ -1,4 +1,4 @@
-ม# Dokploy Docker Compose for Medical Chat Application
+# Dokploy Docker Compose for Medical Chat Application
 # Complete stack: Frontend, Backend, Ollama with Medical Models
 
 version: '3.8'

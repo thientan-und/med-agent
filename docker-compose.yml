@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: medical-backend
     ports:
-      - "8000:8000"
+      - "8001:8000"
     environment:
       - ENVIRONMENT=production
       - HOST=0.0.0.0

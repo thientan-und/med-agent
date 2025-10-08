@@ -1,0 +1,18 @@
+[
+  {
+    "feedback_id": "fb_20250929_094944_dr_test",
+    "chat_id": "test_001",
+    "doctor_id": "dr_test",
+    "timestamp": "2025-09-29T09:49:44.714558",
+    "diagnosis_approved": false,
+    "corrected_diagnosis": {
+      "original_icd": "G03.9",
+      "corrected_icd": "J00",
+      "reasoning": "More likely common cold than meningitis"
+    },
+    "corrected_medications": null,
+    "feedback_notes": "AI was too aggressive in diagnosis",
+    "urgency_assessment": null,
+    "client_ip": "127.0.0.1"
+  }
+]

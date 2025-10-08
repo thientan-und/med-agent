@@ -1,0 +1,120 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Frontend - Next.js
+frontend/node_modules
+frontend/.pnp
+frontend/.pnp.*
+frontend/.yarn/*
+frontend/.next/
+frontend/out/
+frontend/build
+frontend/.DS_Store
+frontend/*.pem
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.pnpm-debug.log*
+frontend/.env*
+!frontend/.env.example
+frontend/.vercel
+frontend/*.tsbuildinfo
+frontend/next-env.d.ts
+
+# Backend - Python/FastAPI
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/*.so
+backend/.Python
+backend/build/
+backend/develop-eggs/
+backend/dist/
+backend/downloads/
+backend/eggs/
+backend/.eggs/
+backend/lib/
+backend/lib64/
+backend/parts/
+backend/sdist/
+backend/var/
+backend/wheels/
+backend/*.egg-info/
+backend/.installed.cfg
+backend/*.egg
+backend/MANIFEST
+backend/.env
+!backend/.env.example
+backend/.venv
+backend/env/
+backend/venv/
+backend/ENV/
+backend/env.bak/
+backend/venv.bak/
+backend/logs/*.log
+backend/logs/*.log.*
+backend/temp/
+backend/.coverage
+backend/.pytest_cache/
+backend/htmlcov/
+
+# Root level
+/node_modules/
+/.DS_Store
+*.log
+*.pid
+*.seed
+*.pid.lock
+.env
+.env.*
+!.env.example
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS Files
+Thumbs.db
+.DS_Store
+
+# Testing
+coverage/
+.nyc_output
+test-results/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Ollama and models
+ollama
+ngrok
+*.bin
+*.gguf
+
+# Training data (keep structure but ignore data)
+training-data/*.json
+training-data/*.csv
+training-data/*.txt
+!training-data/.gitkeep
+
+# Build artifacts
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Package manager lock files (for root)
+/package-lock.json
+/yarn.lock
+# Keep pnpm-lock.yaml for frontend
+!frontend/pnpm-lock.yaml

@@ -1,0 +1,18 @@
+medicine_id,medicine_name,thai_name,category,dosage_form,strength,indications
+1,Paracetamol,พาราเซตามอล,Analgesic/Antipyretic,Tablet,500mg,ลดไข้ บรรเทาปวด
+2,Ibuprofen,ไอบูโพรเฟน,NSAID,Tablet,200mg,บรรเทาปวด ลดอักเสบ
+3,Chloramphenicol Eye Drop,ยาหยอดตาคลอโรฟ,Antibiotic,Eye Drop,,ติดเชื้อตา
+4,Amoxicillin-Clavulanate,อะม็อกซิซิลลิน-คลาวูลาเนต,Antibiotic,Tablet,1000mg,ติดเชื้อแบคทีเรีย
+5,Betahistine,บีทาฮิสทีน,Antivertigo,Tablet,6mg/16mg,วิงเวียน เวียนศีรษะ
+6,ORS Powder,ผงเกลือแร่,Electrolyte,Powder,,ท้องเสีย ขาดน้ำ
+7,Norfloxacin,นอร์ฟล็อกซาซิน,Antibiotic,Tablet,400mg,ติดเชื้อทางเดินอาหาร
+8,Histamine Eye Drop,ยาหยอดตาฮิสตา,Antihistamine,Eye Drop,,แพ้ตา ตาแดง
+9,Polymyxin Eye Drop,ยาหยอดตาพอลี,Antibiotic,Eye Drop,,ติดเชื้อตา
+10,Antibiotic Eye Drop,ยาหยอดตาปฏิชีวนะ,Antibiotic,Eye Drop,,ติดเชื้อตา
+11,Norgesic,นอร์เจสิก,Muscle Relaxant,Tablet,,คลายกล้ามเนื้อ บรรเทาปวด
+12,Omeprazole,โอเมพราโซล,PPI,Capsule,20mg,ลดกรด กระเพาะอักเสบ
+13,Cetirizine,เซทิริซีน,Antihistamine,Tablet,10mg,แพ้ ลมพิษ
+14,Hyoscine,ไฮออสซีน,Antispasmodic,Tablet,10mg,ปวดท้อง ลำไส้บิดเกร็ง
+15,Antacid,ยาลดกรด,Antacid,Tablet,,ลดกรดในกระเพาะ
+16,Pseudoephedrine,ซูโดอีเฟดรีน,Decongestant,Tablet,30mg,คัดจมูก โพรงจมูกอักเสบ
+17,Favipiravir,ฟาวิพิราเวียร์,Antiviral,Tablet,200mg,ยาต้านไวรัส COVID-19

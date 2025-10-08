@@ -1,0 +1,103 @@
+# Medical Chat AI Backend - Python Dependencies
+# FastAPI medical consultation system with agentic AI
+
+# Core FastAPI framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Pydantic for data validation
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# HTTP client for AI model communication
+aiohttp==3.9.1
+httpx==0.25.2
+
+# Database support
+sqlalchemy==2.0.23
+alembic==1.12.1
+asyncpg==0.29.0  # PostgreSQL async driver
+aiosqlite==0.19.0  # SQLite async driver
+
+# Data processing
+pandas==2.1.4
+numpy==1.25.2
+python-dateutil==2.8.2
+
+# CSV and JSON handling
+openpyxl==3.1.2
+chardet==5.2.0
+
+# Logging and monitoring
+python-json-logger==2.0.7
+structlog==23.2.0
+
+# Security and authentication
+python-jose[cryptography]==3.3.0
+passlib[bcrypt]==1.7.4
+python-multipart==0.0.6
+
+# CORS is handled by FastAPI middleware
+
+# Vector database client (Qdrant)
+qdrant-client==1.7.0
+
+# Thai language processing
+pythainlp==4.0.2
+attacut==1.0.6
+
+# Machine learning utilities
+scikit-learn==1.3.2
+langdetect==1.0.9
+
+# Text processing
+regex==2023.10.3
+unidecode==1.3.7
+
+# Configuration management
+python-dotenv==1.0.0
+dynaconf==3.2.4
+
+# Async utilities
+asyncio-throttle==1.0.2
+aiofiles==23.2.1
+
+# Development dependencies
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+black==23.11.0
+isort==5.12.0
+flake8==6.1.0
+mypy==1.7.1
+
+# API documentation
+markdown==3.5.1
+
+# Rate limiting
+slowapi==0.1.9
+redis==5.0.1  # Optional: for distributed rate limiting
+
+# Monitoring and metrics
+prometheus-client==0.19.0
+psutil==5.9.6
+
+# WebSocket support
+websockets==12.0
+
+# Time zone handling
+pytz==2023.3
+
+# Environment and OS utilities
+click==8.1.7
+rich==13.7.0  # For beautiful console output
+
+# Optional: AI/ML libraries for local processing
+# torch==2.1.1  # Uncomment if using local PyTorch models
+# transformers==4.35.2  # Uncomment if using Hugging Face models
+# sentence-transformers==2.2.2  # For embeddings
+
+# Optional: Traditional Thai NLP
+# deepcut==0.7.0  # Alternative Thai tokenizer
+# thai-segmenter==0.4.1  # Another Thai text segmentation option

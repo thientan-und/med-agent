@@ -1,0 +1,37 @@
+{
+  "name": "medical-chat-app-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Medical Chat AI Application with Next.js Frontend and FastAPI Backend",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && pnpm dev",
+    "dev:backend": "cd backend && make run",
+    "build": "cd frontend && pnpm build",
+    "build:frontend": "cd frontend && pnpm build",
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd frontend && pnpm start",
+    "start:backend": "cd backend && make prod",
+    "install": "npm run install:frontend && npm run install:backend",
+    "install:frontend": "cd frontend && pnpm install",
+    "install:backend": "cd backend && pip install -r requirements.txt",
+    "clean": "npm run clean:frontend && npm run clean:backend",
+    "clean:frontend": "cd frontend && rm -rf .next node_modules",
+    "clean:backend": "cd backend && make clean",
+    "test": "npm run test:backend",
+    "test:backend": "node test-patient-scenarios.js",
+    "test:e2e": "npx playwright test",
+    "test:e2e:ui": "npx playwright test --ui",
+    "lint": "cd frontend && pnpm lint",
+    "check": "cd backend && make check",
+    "setup": "npm run setup:backend && npm run setup:models",
+    "setup:backend": "cd backend && make setup",
+    "setup:models": "./setup-ollama.sh && ./setup-models.sh"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.55.1",
+    "concurrently": "^8.2.2"
+  },
+  "author": "",
+  "license": "MIT"
+}

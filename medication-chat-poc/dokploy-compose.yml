@@ -1,0 +1,101 @@
+ม# Dokploy Docker Compose for Medical Chat Application
+# Complete stack: Frontend, Backend, Ollama with Medical Models
+
+version: '3.8'
+
+services:
+  # Ollama Service with Medical Models
+  ollama:
+    build:
+      context: ./ollama
+      dockerfile: Dockerfile
+    container_name: medical-chat-ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+      - OLLAMA_PORT=11434
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    networks:
+      - medical-chat-network
+
+  # Backend API Service
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: medical-chat-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - HOST=0.0.0.0
+      - PORT=8000
+      - OLLAMA_URL=http://ollama:11434
+      - SEALLM_MODEL=nxphi47/seallm-7b-v2-q4_0:latest
+      - MEDLLAMA_MODEL=medllama2:latest
+      - CORS_ORIGINS=["http://localhost:3000", "https://your-domain.com"]
+    volumes:
+      - backend_logs:/app/logs
+      - backend_data:/app/data
+    depends_on:
+      ollama:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health/"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+    networks:
+      - medical-chat-network
+
+  # Frontend Next.js Service
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: medical-chat-frontend
+    ports:
+      - "3000:3000"
+      - "3003:3003"  # WebSocket port
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+      - WEBSOCKET_PORT=3003
+      - OLLAMA_URL=http://ollama:11434
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - medical-chat-network
+
+volumes:
+  ollama_data:
+    driver: local
+  backend_logs:
+    driver: local
+  backend_data:
+    driver: local
+
+networks:
+  medical-chat-network:
+    driver: bridge

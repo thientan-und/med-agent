@@ -1,0 +1,179 @@
+{
+  "name": "medical-chat-application",
+  "description": "Medical Chat AI Application with Thai language support",
+  "version": "1.0.0",
+  "stack": "docker-compose",
+  "services": {
+    "ollama": {
+      "name": "medical-ollama",
+      "description": "Ollama with MedLlama2 and SeaLLM models",
+      "type": "docker",
+      "build": {
+        "context": "./ollama",
+        "dockerfile": "Dockerfile"
+      },
+      "ports": [
+        {
+          "internal": 11434,
+          "external": 11434,
+          "protocol": "tcp"
+        }
+      ],
+      "volumes": [
+        {
+          "name": "ollama_data",
+          "path": "/root/.ollama"
+        }
+      ],
+      "environment": {
+        "OLLAMA_HOST": "0.0.0.0",
+        "OLLAMA_PORT": "11434"
+      },
+      "healthcheck": {
+        "test": ["CMD", "curl", "-f", "http://localhost:11434/api/tags"],
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "120s"
+      },
+      "restart": "unless-stopped",
+      "resources": {
+        "memory": "8GB",
+        "cpu": "4"
+      }
+    },
+    "backend": {
+      "name": "medical-backend",
+      "description": "FastAPI backend with precision medical AI",
+      "type": "docker",
+      "build": {
+        "context": "./backend",
+        "dockerfile": "Dockerfile"
+      },
+      "ports": [
+        {
+          "internal": 8000,
+          "external": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "volumes": [
+        {
+          "name": "backend_logs",
+          "path": "/app/logs"
+        },
+        {
+          "name": "backend_data",
+          "path": "/app/data"
+        }
+      ],
+      "environment": {
+        "ENVIRONMENT": "production",
+        "HOST": "0.0.0.0",
+        "PORT": "8000",
+        "OLLAMA_URL": "http://ollama:11434",
+        "SEALLM_MODEL": "nxphi47/seallm-7b-v2-q4_0:latest",
+        "MEDLLAMA_MODEL": "medllama2:latest",
+        "CORS_ORIGINS": "[\"https://your-domain.com\"]"
+      },
+      "dependsOn": ["ollama"],
+      "healthcheck": {
+        "test": ["CMD", "curl", "-f", "http://localhost:8000/api/v1/health/"],
+        "interval": "30s",
+        "timeout": "30s",
+        "retries": 3,
+        "startPeriod": "60s"
+      },
+      "restart": "unless-stopped",
+      "resources": {
+        "memory": "2GB",
+        "cpu": "2"
+      }
+    },
+    "frontend": {
+      "name": "medical-frontend",
+      "description": "Next.js frontend with Thai medical chat interface",
+      "type": "docker",
+      "build": {
+        "context": "./frontend",
+        "dockerfile": "Dockerfile"
+      },
+      "ports": [
+        {
+          "internal": 3000,
+          "external": 3000,
+          "protocol": "tcp"
+        },
+        {
+          "internal": 3003,
+          "external": 3003,
+          "protocol": "tcp"
+        }
+      ],
+      "environment": {
+        "NODE_ENV": "production",
+        "NEXT_TELEMETRY_DISABLED": "1",
+        "PORT": "3000",
+        "WEBSOCKET_PORT": "3003",
+        "OLLAMA_URL": "http://ollama:11434",
+        "API_BASE_URL": "http://backend:8000"
+      },
+      "dependsOn": ["backend"],
+      "healthcheck": {
+        "test": ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"],
+        "interval": "30s",
+        "timeout": "10s",
+        "retries": 3,
+        "startPeriod": "60s"
+      },
+      "restart": "unless-stopped",
+      "resources": {
+        "memory": "1GB",
+        "cpu": "1"
+      }
+    }
+  },
+  "networks": {
+    "medical-chat-network": {
+      "driver": "bridge"
+    }
+  },
+  "volumes": {
+    "ollama_data": {
+      "driver": "local"
+    },
+    "backend_logs": {
+      "driver": "local"
+    },
+    "backend_data": {
+      "driver": "local"
+    }
+  },
+  "deployment": {
+    "strategy": "rolling",
+    "replicas": 1,
+    "domain": "your-domain.com",
+    "ssl": true,
+    "monitoring": true
+  },
+  "scaling": {
+    "frontend": {
+      "min": 1,
+      "max": 3,
+      "cpu": 70,
+      "memory": 80
+    },
+    "backend": {
+      "min": 1,
+      "max": 2,
+      "cpu": 80,
+      "memory": 85
+    },
+    "ollama": {
+      "min": 1,
+      "max": 1,
+      "cpu": 90,
+      "memory": 90
+    }
+  }
+}

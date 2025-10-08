@@ -1,0 +1,36 @@
+treatment_id,condition_name,thai_condition,icd_code,medications
+1,Polyarthrosis,ข้ออักเสบหลายข้อ,M15,พาราเซตามอล ไอบูโพรเฟน
+2,Viral conjunctivitis,ตาแดงจากไวรัส,B30,ยาหยอดตาคลอโรฟ
+3,Primary generalized osteoarthrosis,ข้อเสื่อมโดยทั่วไป,M15.0,ไอบูโพรเฟน
+4,Cellulitis,เนื้อเยื่ออักเสบ,L03,อะม็อกซิซิลลิน-คลาวูลาเนต
+5,Dizziness and giddiness,วิงเวียน มึน,R42,บีทาฮิสทีน
+6,Headache,ปวดศีรษะ,R51,พาราเซตามอล
+7,Bacterial Food-Borne Intoxication,อาหารเป็นพิษ,A05.9,ผงเกลือแร่ ORS
+8,Gastroenteritis and colitis,ท้องร่วง กระเพาะลำไส้อักเสบ,A09,พาราเซตามอล นอร์ฟล็อกซาซิน
+9,Fever of unknown origin,ไข้ไม่ทราบสาเหตุ,R50,พาราเซตามอล
+10,Disorders of vestibular function,ความผิดปกติระบบทรงตัว,H81,บีทาฮิสทีน
+11,Hordeolum and chalazion,ตากุ้งยิง ตุ่มหนังตา,H00,ยาหยอดตาฮิสตา
+12,Conjunctivitis,เยื่อบุตาอักเสบ,H10,ยาหยอดตาพอลี
+13,Viral infection,การติดเชื้อไวรัส,B34,พาราเซตามอล
+14,Muscle strain,กล้ามเนื้อเคล็ด,M62.6,ไอบูโพรเฟน
+15,Monoarthritis,ข้ออักเสบข้อเดี่ยว,M13.1,ไอบูโพรเฟน
+16,Common cold,หวัดธรรมดา,J00,พาราเซตามอล
+17,Benign paroxysmal vertigo,เวียนศีรษะบ้านหมุน,H81.1,บีทาฮิสทีน
+18,Functional Dyspepsia,ปวดท้องช่วงบน,K30,โอเมพราโซล
+19,Acute upper respiratory infections,ติดเชื้อทางเดินหายใจส่วนบน,J06,อะม็อกซิซิลลิน-คลาวูลาเนต
+20,Urticaria,ลมพิษ,L50,เซทิริซีน
+21,Abdominal and pelvic pain,ปวดท้องและอุ้งเชิงกราน,R10,ไฮออสซีน ยาลดกรด
+22,Acute conjunctivitis,เยื่อบุตาอักเสบเฉียบพลัน,H10.3,ยาหยอดตาปฏิชีวนะ
+23,Lumbago with sciatica,ปวดหลังส่วนล่าง,M54.5,ไอบูโพรเฟน นอร์เจสิก
+24,Acute pharyngitis,คออักเสบเฉียบพลัน,J02,อะม็อกซิซิลลิน-คลาวูลาเนต พาราเซตามอล
+25,Acute tonsillitis,ทอนซิลอักเสบเฉียบพลัน,J03,อะม็อกซิซิลลิน-คลาวูลาเนต พาราเซตามอล
+26,Gastritis,กระเพาะอักเสบ,K29.7,โอเมพราโซล
+27,Unspecified abdominal pain,ปวดท้องไม่ระบุรายละเอียด,R10.4,ยาลดกรด พาราเซตามอล
+28,Polyarthritis,ข้ออักเสบหลายข้อ,M13.0,ไอบูโพรเฟน
+29,Allergic rhinitis,เยื่อจมูกอักเสบจากการแพ้,J30.4,เซทิริซีน
+30,Myalgia,ปวดกล้ามเนื้อ,M79.1,พาราเซตามอล ไอบูโพรเฟน
+31,Vasomotor and allergic rhinitis,เยื่อจมูกอักเสบจากแพ้,J30,เซทิริซีน
+32,Other arthritis,ข้ออักเสบแบบอื่น,M13,ไอบูโพรเฟน
+33,Acute sinusitis,ไซนัสอักเสบเฉียบพลัน,J01,พาราเซตามอล ซูโดอีเฟดรีน อะม็อกซิซิลลิน-คลาวูลาเนต
+34,COVID-19,โควิด 19,U07.1,พาราเซตามอล ฟาวิพิราเวียร์
+35,Migraine,ไมเกรน,G43,พาราเซตามอล ไอบูโพรเฟน

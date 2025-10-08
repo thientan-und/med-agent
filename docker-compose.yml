@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ./medication-chat-poc/backend
+      dockerfile: Dockerfile
+    container_name: medical-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENVIRONMENT=production
+      - HOST=0.0.0.0
+      - PORT=8000
+      - OLLAMA_URL=http://host.docker.internal:11434
+    restart: unless-stopped
+    networks:
+      - medical-network
+
+  frontend:
+    build:
+      context: ./medication-chat-poc/frontend
+      dockerfile: Dockerfile
+    container_name: medical-frontend
+    ports:
+      - "3000:3000"
+      - "3003:3003"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+      - PORT=3000
+      - WEBSOCKET_PORT=3003
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - medical-network
+
+networks:
+  medical-network:
+    driver: bridge

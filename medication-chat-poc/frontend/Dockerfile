@@ -52,14 +52,6 @@ COPY --from=builder /app/pnpm-lock.yaml ./pnpm-lock.yaml
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Copy additional files needed for production
-COPY --from=builder /app/websocket-server.js ./websocket-server.js
-COPY --from=builder /app/start-sync.sh ./start-sync.sh
-COPY --from=builder /app/data ./data
-
-# Make scripts executable
-RUN chmod +x ./start-sync.sh
-
 # Install production dependencies only
 RUN pnpm install --prod --frozen-lockfile
 
@@ -80,4 +72,4 @@ EXPOSE 3000 3003
 USER nextjs
 
 # Start command
-CMD ["sh", "./start-sync.sh"]
+CMD ["node", "server.js"]

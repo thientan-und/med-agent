@@ -7,7 +7,7 @@ services:
   # Ollama Service with Medical Models
   ollama:
     build:
-      context: ./ollama
+      context: ./medication-chat-poc/ollama
       dockerfile: Dockerfile
     container_name: medical-chat-ollama
     ports:
@@ -30,7 +30,7 @@ services:
   # Backend API Service
   backend:
     build:
-      context: ./backend
+      context: ./medication-chat-poc/backend
       dockerfile: Dockerfile
     container_name: medical-chat-backend
     ports:
@@ -62,7 +62,7 @@ services:
   # Frontend Next.js Service
   frontend:
     build:
-      context: ./frontend
+      context: ./medication-chat-poc/frontend
       dockerfile: Dockerfile
     container_name: medical-chat-frontend
     ports:

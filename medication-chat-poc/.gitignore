@@ -89,8 +89,7 @@ tmp/
 temp/
 *.tmp
 
-# Ollama and models
-ollama
+# Ollama runtime (but keep Dockerfile)
 ngrok
 *.bin
 *.gguf

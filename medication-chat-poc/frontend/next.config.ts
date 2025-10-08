@@ -8,11 +8,6 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
 
-  // Turbopack configuration
-  turbopack: {
-    root: '/Users/plug-und/Development/chat-agent/medication-chat-poc/frontend',
-  },
-
   // WebSocket and CORS configuration for Dokploy
   async headers() {
     return [
